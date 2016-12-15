@@ -1,0 +1,229 @@
+// Kyle Hampton 
+// CIST 1400-006 
+// 9 
+// November 1, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+public class kthampton_ROT13Arrays { 
+    private static Scanner input = new Scanner ( System.in ); 
+    public static void main ( String args[] ) { 
+        String[] sentences = new String[5]; 
+        getSentences( sentences ); 
+        displayOriginal( sentences ); 
+        displayROT13( sentences ); 
+        displayCombinedROT13( sentences ); 
+    } 
+ 
+    /** 
+     * getSentences 
+     * 
+     * This method allows the user to enter text into each of the 
+     * element of the String array that it receives. 
+     * 
+     * @param      sentences   An array of String[] data 
+     * @return     None 
+     */ 
+    public static void getSentences( String[] sent ) { 
+        System.out.print( "Enter your 5 sentences below:\n\n"); 
+        for ( int x = 0 ; x < sent.length ; x++ ) { 
+            System.out.printf( "Sentence %d> ", x + 1); 
+            sent[x] = input.nextLine(); 
+        } 
+    } 
+    /** 
+     * displayOriginal 
+     * 
+     * This method displays all of the elements of the array of 
+     * String data that it receives, line by line (element by element). 
+     * 
+     * @param      sentences   An array of String[] data 
+     * @return     None 
+     */ 
+    public static void displayOriginal( String[] sent ) { 
+        System.out.println( "\nThe original text: "); 
+        for ( int x = 0 ; x < sent.length; x++ ) { 
+            System.out.println( sent[x] ); 
+        } 
+    } 
+ 
+    /** 
+     * charConvert 
+     * 
+     * This method will take on char value as a parameter and convert 
+     * it to its appropriate ROT13 equivalent. The return value will be the 
+     * new ROT13 char equivalent. 
+     *  
+     * This method will no do any output. 
+     * 
+     * @param      toConvert   A character to convert as a char 
+     * @return     The new ROT13 equivalent value as a char 
+     */ 
+    public static char charConvert( char toConvert ) { 
+        switch ( toConvert ) { 
+            case 'a': case 'A': 
+                toConvert = 'N'; 
+                break; 
+            case 'b': case 'B': 
+                toConvert = 'O'; 
+                break; 
+            case 'c': case 'C': 
+                toConvert = 'P'; 
+                break; 
+            case 'd': case 'D': 
+                toConvert = 'Q'; 
+                break; 
+            case 'e': case 'E': 
+                toConvert = 'R'; 
+                break; 
+            case 'f': case 'F': 
+                toConvert = 'S'; 
+                break; 
+            case 'g': case 'G': 
+                toConvert = 'T'; 
+                break; 
+            case 'h': case 'H': 
+                toConvert = 'U'; 
+                break; 
+            case 'i': case 'I': 
+                toConvert = 'V'; 
+                break; 
+            case 'j': case 'J': 
+                toConvert = 'W'; 
+                break; 
+            case 'k': case 'K': 
+                toConvert = 'X'; 
+                break; 
+            case 'l': case 'L':
+                toConvert = 'Y';
+                break;
+            case 'm': case 'M':
+                toConvert = 'Z';
+                break;
+            case 'n': case 'N':
+                toConvert = 'A';
+                break;
+            case 'o': case 'O':
+                toConvert = 'B';
+                break;
+            case 'p': case 'P':
+                toConvert = 'C';
+                break;
+            case 'q': case 'Q':
+                toConvert = 'D';
+                break;
+            case 'r': case 'R':
+                toConvert = 'E';
+                break;
+            case 's': case 'S':
+                toConvert = 'F';
+                break;
+            case 't': case 'T':
+                toConvert = 'G';
+                break;
+            case 'u': case 'U':
+                toConvert = 'H';
+                break;
+            case 'v': case 'V':
+                toConvert = 'I';
+                break;
+            case 'w': case 'W':
+                toConvert = 'J';
+                break;
+            case 'x': case 'X':
+                toConvert = 'K';
+                break;
+            case 'y': case 'Y':
+                toConvert = 'L';
+                break;
+            case 'z': case 'Z':
+                toConvert = 'M';
+                break;
+            default:
+                toConvert = '#';
+                break;
+        }
+ 
+        return toConvert;
+    }
+ 
+    /**
+     * convertSentence
+     * 
+     * This method will do the actual conversion of a String of data to its
+     * ROT13 equivalent in 5-character chunks of data.  It should call on
+     * the charConvert() method to do the actual character conversion for each
+     * individual character.  In other words, individual character conversion
+     * should not happen within this method.
+     *
+     * This method will not do any output.
+     *
+     * @param      sentence    A String variable to convert
+     * @return     The 5-characters in a groupd ROT13 result as a String
+     */
+    public static String convertSentence( String sentence ) {
+        //for ( int x = 0; x < sentences[x].length; x++ ) {
+        String storage = "";
+        int pos = 0;
+        int count = 1;
+        for ( int y = 0; y < sentence.length(); y++ ) {
+            char toConvert = sentence.charAt(pos);
+            char postConvert = charConvert ( toConvert );
+            if ( postConvert != '#' ) {{
+                storage += postConvert;}
+            count++;}
+            if ( count % 6 == 0 && count >= 6 ) {{
+                storage += " ";}
+            count++;}
+            pos++;
+        }
+        return storage;
+        }
+ 
+    /**
+     *displayROT13
+     *
+     * This method will display in ROT13 format all of the elements of the
+     * array of String data that it receives .  It will need to call on the
+     * method convertSentence() to convert each string before it displays it.
+     * Note that the original array should not be modified with ROT13 data.
+     *
+     * @param      sentences   An array of String[] data
+     * @return     None
+     */
+    public static void displayROT13( String[] sent) {
+        System.out.println( "\nThe line-by-line ROT13: ");
+        //String chain = "";
+        for ( int x = 0 ; x < sent.length; x++ ) {
+            String enter = sent[x];
+            String exit = convertSentence ( enter );
+            System.out.println( exit ) ;
+        }
+    }
+ 
+    /**
+     * displayCombinedROT13
+     *
+     * This method takes an array of String data and combines all of the Strings
+     * into a single String that is then processed by the convertSentence()
+     * method.  The method should essentially display the same results as the
+     * displayROT13() method, except that there won't be separate lines of
+     * output but rather one large result instead.
+     *
+     * @param      sentences   An array of String[] data
+     * @return     None
+     */
+    public static void displayCombinedROT13( String[] sent) {
+        System.out.println( "\nThe combined ROT13: ");
+        String chain1 = "";
+        for ( int x = 0; x < sent.length; x++ ) {
+            chain1 += sent[x];
+        }
+        String chain2 = convertSentence ( chain1 );
+        System.out.println( chain2 );
+    }
+    }
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+~                    
