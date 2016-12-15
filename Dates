@@ -1,0 +1,268 @@
+/ Kyle Hampton 
+// CIST 1400-006 
+// 7 
+// October 12, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+public class kthampton_Dates { 
+    public static void main ( String args[]  ) { 
+        Scanner get = new Scanner ( System.in ); 
+        Boolean goodDate; 
+        int month, year, day; 
+        int month2, year2, day2; 
+        int daysInMonth = 0; 
+        int daysInMonth2 = 0; 
+        int daysInYear = 0; 
+        int daysInYear2 = 0; 
+        int dayOfYear = 0; 
+        int dayOfYear2 = 0; 
+        int dayDiff = 0; 
+        int weekDiff, yearDiff; 
+        int daysRemain; 
+        int leapDays = 0; 
+ 
+        System.out.println ( "Enter first date now: " ); 
+ 
+        //do while loop for date 1 
+        do { 
+            //get date 1 
+            goodDate = true; 
+            System.out.print ( "Enter Month: " ); 
+            month = get.nextInt(); 
+            System.out.print ( "Enter Day  : " ); 
+            day = get.nextInt(); 
+            System.out.print ( "Enter Year : " ); 
+            year = get.nextInt(); 
+             //daysInMonth1 test 
+            if( month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) { 
+                daysInMonth = 31;} 
+            else if( month == 4 || month == 6 || month == 9 || month == 11 ) { 
+                daysInMonth = 30;} 
+            //February If 
+            else if ( month == 2 ){ 
+                //Leap Year Qualification 
+                if ( year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) { 
+                    daysInMonth = 29;} 
+                else { 
+                    daysInMonth = 28;}} 
+            //month1 test 
+            if ( month < 1 || month > 12 ) {{ 
+                System.out.printf ( "%d is not a valid month.\n", month ); } 
+            goodDate = false;} 
+            //day1 test  
+            else if ( day < 1 || day > daysInMonth ) {{ 
+                System.out.printf ( "%d is not a valid day.\n", day );} 
+                goodDate = false;} 
+            //year1 test 
+            else if ( year < 1900 || year > 2400 ) {{ 
+                System.out.printf ( "%d is not a valid year.\n", year );} 
+                goodDate = false;} 
+        } while ( goodDate != true ); 
+ 
+ 
+        System.out.println ( "\nEnter the second date: " ); 
+ 
+        //do while loop for date 2 
+        do{ 
+            //get date 2  
+            goodDate = true; 
+            System.out.print ( "Enter Month: " ); 
+            month2 = get.nextInt(); 
+            System.out.print ( "Enter Day  : " ); 
+            day2 = get.nextInt(); 
+            System.out.print ( "Enter Year : " ); 
+            year2 = get.nextInt(); 
+            //daysInMonth2 test 
+            if ( month2 == 1 || month2 == 3 || month2 == 5 || month2 == 7 || month2 == 8 || month2 == 10 || month2 == 12 ) { 
+                daysInMonth2 = 31;} 
+            else if( month2 == 4 || month2 == 6 || month2 == 9 || month2 == 11 ) { 
+                daysInMonth2 = 30;} 
+            //February If 
+            else if ( month2 == 2 ){ 
+                //Leap Year Qualification 
+                if ( year2 % 400 == 0 || year2 % 4 == 0 && year2 % 100 != 0 ) { 
+                    daysInMonth2 = 29;}
+                else {
+                    daysInMonth2 = 28;}}
+            //month2 test
+            if ( month2 < 1 || month2 > 12 ) {{
+                System.out.printf ( "%d is not a valid month.\n", month2 ); }
+            goodDate = false;}
+            //day2 test 
+            else if ( day2 < 1 || day2 > daysInMonth2) {{
+                System.out.printf ( "%d is not a valid day.\n", day2 );}
+                goodDate = false;}
+            //year2 test
+            else if ( year2 < 1900 || year2 > 2400 ) {{
+                System.out.printf ( "%d is not a valid year.\n", year2 );}
+                goodDate = false;}
+        } while ( goodDate != true );
+ 
+        //days in year 
+        if ( year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) {
+            daysInYear = 366 ;}
+        else {
+            daysInYear = 365;}
+        //day of year
+        if ( month == 1 ){
+            dayOfYear = day;}
+        else if ( month == 2){
+            dayOfYear = day + 31;}
+        else if ( month == 3 && daysInYear == 365){
+            dayOfYear = day + 31 + 28;}
+        else if ( month == 3 && daysInYear == 366){
+            dayOfYear = day + 31 + 29;}
+        else if ( month == 4 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31;}
+        else if ( month == 4 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31;}
+        else if ( month == 5 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30;}
+        else if ( month == 5 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30;}
+        else if ( month == 6 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31;}
+        else if ( month == 6 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31;}
+        else if ( month == 7 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30;}
+        else if ( month == 7 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30;}
+        else if ( month == 8 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30 + 31;}
+        else if ( month == 8 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30 + 31;}
+        else if ( month == 9 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;}
+        else if ( month == 9 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;}
+        else if ( month == 10 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;}
+        else if ( month == 10 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30+ 31 + 31 + 30;}
+        else if ( month == 11 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;}
+        else if ( month == 11 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;}
+        else if ( month == 12 && daysInYear == 365){
+            dayOfYear = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;}
+        else if ( month == 12 && daysInYear == 366){
+            dayOfYear = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;}
+ 
+        //day in year 2 
+        if ( year2 % 400 == 0 || year2 % 4 == 0 && year2 % 100 != 0 ) {
+            daysInYear2 = 366 ;}
+        else {
+            daysInYear2 = 365;}
+        //day of year2
+        if ( month2 == 1 ){
+            dayOfYear2 = day2;}
+        else if ( month2 == 2){
+            dayOfYear2 = day2 + 31;}
+        else if ( month2 == 3 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28;}
+        else if ( month2 == 3 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29;}
+        else if ( month2 == 4 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31;}
+        else if ( month2 == 4 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31;}
+        else if ( month2 == 5 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30;}
+        else if ( month2 == 5 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30;}
+        else if ( month2 == 6 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31;}
+        else if ( month2 == 6 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31;}
+        else if ( month2 == 7 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30;}
+        else if ( month2 == 7 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30;}
+        else if ( month2 == 8 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30 + 31;}
+        else if ( month2 == 8 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30 + 31;}
+        else if ( month2 == 9 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;}
+        else if ( month2 == 9 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;}
+        else if ( month2 == 10 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;}
+        else if ( month2 == 10 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30+ 31 + 31 + 30;}
+        else if ( month2 == 11 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;}
+        else if ( month2 == 11 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;}
+        else if ( month2 == 12 && daysInYear2 == 365){
+            dayOfYear2 = day2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;}
+        else if ( month2 == 12 && daysInYear2 == 366){
+            dayOfYear2 = day2 + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;}
+ 
+        System.out.printf ( "\nThe first date is: %d/%d/%d\n", month, day, year);
+        System.out.printf ( "The other date is: %d/%d/%d\n", month2, day2, year2);
+ 
+ 
+        if ( year == year2) {
+            if ( month >= month2 && day > day2 ){
+                dayDiff = dayOfYear - dayOfYear2 ;}
+            else { dayDiff = dayOfYear2 - dayOfYear ;}}
+        else if ( year > year2 ) {{{
+            yearDiff = year - ( year2 + 1) ;}
+            daysRemain = daysInYear2 - dayOfYear2;}
+            dayDiff = daysRemain + (yearDiff * 365) + dayOfYear;}
+        else if ( year2 > year ) {{{
+            yearDiff = year2 - (year + 1) ;}
+            daysRemain = daysInYear - dayOfYear;}
+            dayDiff = daysRemain + (yearDiff * 365) + dayOfYear2;}
+ 
+ 
+        while ( year > year2 ) {
+        if ( year2 % 400 == 0 || year2 % 4 == 0 && year2 % 100 != 0 ){{
+            year2++ ;}
+        leapDays++;}
+        else {
+            year2++;}
+        }
+ 
+        while ( year2 > year ) {
+        if ( year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ){{
+            year++ ;}
+        leapDays++;}
+        else {
+            year++;}
+        }
+ 
+        dayDiff = dayDiff + leapDays;
+ 
+        System.out.printf ( "\nThe total number of days between the dates is %d\n", dayDiff );
+        //total weeks and days
+        weekDiff = dayDiff / 7;
+        System.out.printf ( "That's a total of %d weeks and %d days.\n", weekDiff, dayDiff % 7 );
+        //total hours
+        System.out.printf ( "That's %d hours.\n", dayDiff * 24 );
+        //total minutes
+        System.out.printf ( "That's %d minutes.\n", dayDiff * 24 * 60 );
+ 
+ 
+}
+}
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                   
