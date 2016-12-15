@@ -1,0 +1,229 @@
+// Kyle Hampton 
+// CIST 1400-006 
+// 12 
+// December 6, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+import java.io.File; 
+/** 
+ * kthampton_SudokuChecker() 
+ * 
+ * This is the constructor method for the class. It will not have 
+ * a return type, and the name of the method needs to match the 
+ * name of the class exactly. 
+ * 
+ * This method takes as an argument a String that is the name of a 
+ * file. It should open up the file and read in the file contents 
+ * into the 2-d int array "grid" that is a private instance variable 
+ * of the class. 
+ * 
+ * @param      inputFile       a String containing the input file name 
+ * @return     no return type at all 
+ */ 
+public class kthampton_SudokuChecker { 
+    private int[][] grid = new int[9][9]; 
+    public kthampton_SudokuChecker( String inputFile ) { 
+        try { 
+            File file = new File ( inputFile ); 
+            Scanner input = new Scanner ( file ); 
+            final int dimension = 9; 
+            for ( int r = 0; r < dimension; r++ ) { 
+                for ( int c = 0; c < dimension; c++ ) { 
+                    int v = input.nextInt(); 
+                    grid[r][c] = v; 
+                } 
+            } 
+            System.out.println( "Loading " + inputFile + " ..." ); 
+        } 
+        catch ( Exception ex ) { 
+            System.out.println( "An error has occurred 1!" ); 
+            ex.printStackTrace(); 
+        } 
+    } 
+    /** 
+     * display() 
+     * 
+     * This method displays the square to the screen.  There should not 
+     * be any labeling of the rows or columns, but separating the output 
+     * into regions is required for easier visual identification of each 
+     * region of the Sudoku grid. See the sample runs for examples. 
+     * 
+     */ 
+    public void display() { 
+        try{ 
+            System.out.println(); 
+            for ( int r = 0; r < grid.length; r++ ) { 
+                for ( int c = 0; c < grid[r].length; c++ ) { 
+                    System.out.printf( "%5d", grid[r][c] ); 
+                    if ( c == 2 || c == 5 ) { 
+                        System.out.print( "    |" ); 
+                    } 
+                } 
+                if ( r == 2 || r == 5) { 
+                    System.out.println("\n  -------------------------------------------------------" ); 
+                } 
+                else { 
+                    System.out.println(); 
+                } 
+            } 
+            System.out.println(); 
+        } 
+        catch ( Exception ex ) { 
+            System.out.println( "An error has occurred 2!" ); 
+            ex.printStackTrace(); 
+        } 
+    } 
+    /** 
+     * checkRows() 
+     *  
+     * This method checks each row to see if it is a valid row, with each 
+     * value between 1 and 9 inclusive being used only once. 
+     *  
+     * The method should label each of the 9 rows and then identify 
+     * if the row is GOOD or BAD by outputting either the text GOOD or BAD. 
+     * There is no need to identify which values are bad (either duplicated 
+     * or missing). 
+     * 
+     * The method should return true if all of the rows are valid and false 
+     * otherwise. 
+     * 
+     * @return     boolean     true or false if all of the rows are valid 
+     */ 
+    public boolean checkRows() { 
+        Boolean valid = true; 
+        int numTotal = grid.length; 
+        for ( int r = 0; r < grid.length; r++ ) { 
+            int[] numLine = new int[numTotal]; 
+            for ( int c = 0; c < grid[r].length; c++ ) { 
+                int v = grid[r][c]; 
+                numLine[v-1]++; 
+            } 
+            System.out.printf("ROW %d: ", r+1 ); 
+            Boolean valid2 = true; 
+            for ( int y = 0; y < numTotal; y++ ) { 
+                if ( numLine[y] == 1 ) { 
+                } 
+                else { 
+                    valid2 = false; 
+                    valid = false; 
+                } 
+            } 
+            if ( valid2 == true ) { 
+                System.out.println( "GOOD" ); 
+            } 
+            else { 
+                System.out.println( "BAD" ); 
+            } 
+        } 
+        System.out.println(); 
+        return valid; 
+    } 
+    /** 
+     * checkColumns() 
+     *  
+     * This method checks each column to see if it is a valid column, with each 
+     * value between 1 and 9 inclusive being used only once. 
+     *  
+     * The method should label each of the 9 columns and then identify 
+     * if the column is GOOD or BAD by outputting either the text GOOD or BAD. 
+     * There is no need to identify which values are bad (either duplicated 
+     * or missing). 
+     * 
+     * The method should return true if all of the columns are valid and false 
+     * otherwise. 
+     * 
+     * @return     boolean     true or false if all of the columns are valid 
+     */ 
+    public boolean checkColumns() { 
+        Boolean valid = true; 
+        int numTotal = grid.length; 
+        for ( int c = 0; c < grid.length; c++ ) { 
+            int[] numLine = new int[numTotal]; 
+            for ( int r = 0; r < grid[c].length; r++ ) { 
+                int v = grid[r][c]; 
+                numLine[v-1]++; 
+            } 
+            System.out.printf("COLUMN %d: ", c+1 ); 
+            Boolean valid2 = true; 
+            for ( int y = 0; y < numTotal; y++ ) {
+                if ( numLine[y] == 1 ) {
+                }
+                else {
+                    valid2 = false;
+                    valid = false;
+                }
+            }
+            if ( valid2 == true ) {
+                System.out.println( "GOOD" );
+            }
+            else {
+                System.out.println( "BAD" );
+            }
+        }
+        System.out.println();
+        return valid;
+    }
+    /**
+     * checkRegions()
+     *
+     * This method checks each of the nine 3x3 regions of the Sudoku to see if
+     * they are valid. A valid region will, like rows and columns, only
+     * contain each of the numbers from 1 through 9 inclusive once.
+     *
+     * The method should label each of the 9 regions and then identify
+     * if the region is GOOD or BAD by outputting either the text GOOD or BAD.
+     * There is no need to identify which values are bad (either duplicated
+     * or missing).
+     *
+     * The method should return true if all of the regions are valid and false
+     * otherwise.
+     *
+     * @return     boolean     true or false if all of the regions are valid
+     */
+    public boolean checkRegions() {
+        Boolean valid = true;
+        int[] region = new int[9];
+        for ( int r = 0; r < 9; r++ ) {
+            for ( int c = 0; c < 9; c++ ) {
+                if ( r <= 2 && c <= 2 ){
+                    region[0] += grid[r][c];
+                }
+                else if ( r <= 2 && ( c >= 3 && c <=5 )) {
+                    region[1] += grid[r][c];
+                }
+                else if ( r <= 2 && ( c >= 6 && c <= 8 )) {
+                    region[2] += grid[r][c];
+                }
+                else if ((r >= 3 && r <= 5) && c <= 2 ) {
+                    region[3] += grid[r][c];
+                }
+                else if (( r >= 3 && r <= 5) && ( c >= 3 && c <=5 )) {
+                    region[4] += grid[r][c];
+                }
+                else if (( r >= 3 && r <= 5) && (c >= 6 && c <= 8)  ) {
+                    region[5] += grid[r][c];
+                }
+                else if ( r >= 6 && (c <= 2)) {
+                    region[6] += grid[r][c];
+                }
+                else if (r >= 6 && (c >= 3 && c <= 5)) {
+                    region[7] += grid[r][c];
+                }
+                else if (r >= 6 && c >= 6) {
+                    region[8] += grid[r][c];
+                }
+            }
+        }
+        for ( int x = 0; x < 9; x++ ) {
+            if ( region[x] != 45 ) {
+                valid = false;
+                System.out.printf( "Region %d: BAD\n", x+1);
+            }
+            else System.out.printf( "Region %d: GOOD\n", x+1);
+        }
+        return valid;
+    }
+}
+ 
+ 
