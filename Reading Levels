@@ -1,0 +1,57 @@
+// Kyle Hampton
+// CIST 1400-006
+// 3   
+// September 14, 2016
+// N/A 
+       
+import java.util.Scanner;
+       
+public class kthampton_ReadingLevels{
+
+    public static void main ( String[] args) { 
+
+        //Declare a scanner and initialize variables
+        Scanner input = new Scanner(System.in);
+        double words, sentences, bigWords, syllables, avgSentLeng, perBigWords, ffAvgSentLeng, syllWords, readEase;
+       
+        //Obtain the number of words, sentences, big words, and syllables from the user
+        System.out.print( "Please enter the number of words in the sample: ");
+        words = input.nextDouble(); 
+        System.out.print( "Please enter the number of sentences in the sample: ");
+        sentences = input.nextDouble(); 
+        System.out.print( "Please enter the number of big words in the sample: ");
+        bigWords = input.nextDouble();
+        System.out.print( "Please enter the number of syllables in the sample: ");
+        syllables = input.nextDouble();
+       
+        //Calculate the average sentence length, percent of big words, flesch formula average sentence length,
+        //sylables per words, and reading ease score
+        avgSentLeng = (words / sentences);
+        perBigWords = ((bigWords / words) * 100);
+        ffAvgSentLeng = avgSentLeng * 1.015;
+        syllWords = (syllables / words) * 84.6;
+        readEase = (206.835 - (ffAvgSentLeng + syllWords));
+           
+        //Print the Gunning Fog Index, the Reading Ease Score, and the corresponding Flesch Grade Level
+        System.out.printf( "The Gunning Fog Index of this sample is %.2f\n", (avgSentLeng + perBigWords) * .4);
+        System.out.printf( "The Reading Ease Score is %.2f\n", readEase );
+        if ( readEase > 100 )
+            System.out.println( "The Flesch Grade Level is: Not defined" );
+        else if ( readEase >= 90 )
+            System.out.println( "The Flesch Grade Level is: 4th to 5th grade" );
+        else if ( readEase >= 80 )
+            System.out.println( "The Flesch Grade Level is: 5th to 6th grade" );
+        else if ( readEase >= 70 )
+            System.out.println( "The Flesch Grade Level is: 7th grade" );
+        else if ( readEase >= 60 )
+            System.out.println( "The Flesch Grade Level is: 8th to 9th grade" );
+        else if ( readEase >= 50 )
+            System.out.println( "The Flesch Grade Level is: High School" );
+        else if (readEase >= 30 )
+            System.out.println( "The Flesch Grade Level is: College" );
+        else if (readEase >= 0 )
+            System.out.println( "The Flesch Grade Level is: Post Graduate" );
+        else
+            System.out.println( "The Flesch Grade level is: Not defined" );
+    }
+}
