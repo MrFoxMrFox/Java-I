@@ -1,0 +1,18 @@
+// Name: Kyle Hampton
+// Class: 1400-006
+// Program: 2
+// Due Date: September 5, 2016
+// Colleagues: N/A
+
+public class kthampton_SimpleOutput
+{
+    public static void main ( String args[] ) {
+        System.out.print("Kyle Hampton\n");
+        System.out.println("kthampton");
+        System.out.println("MS MIS & MBA");
+        System.out.println("Lazlo's, Block 16, Pitch");
+        System.out.println("The Old Market");
+        System.out.println("The Lemon Song By Led Zeppelin");
+        System.out.printf("%s\n","I have New Zealand citizenship");
+    }
+}
