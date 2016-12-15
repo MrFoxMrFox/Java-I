@@ -1,0 +1,105 @@
+// Kyle Hampton 
+// CIST 1400-006 
+// 4 
+// September 21, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+ 
+public class kthampton_ROT13 
+{ 
+    public static void main ( String args[] ) { 
+        Scanner get = new Scanner ( System.in ); 
+        char ch; 
+        System.out.print( "Enter a character to ROT13: " ); 
+        ch = get.next().charAt(0); 
+ 
+        switch ( ch ) { 
+            case 'a': case 'A': 
+                System.out.printf ( "%s:N\n", ch ) ; 
+                break; 
+            case 'b': case 'B': 
+                System.out.printf ( "%s:O\n", ch ) ; 
+                break; 
+            case 'c': case 'C': 
+                System.out.printf ( "%s:P\n", ch ) ; 
+                break; 
+            case 'd': case 'D': 
+                System.out.printf ( "%s:Q\n", ch ) ; 
+                break; 
+            case 'e': case 'E': 
+                System.out.printf ( "%s:R\n", ch ) ; 
+                break; 
+            case 'f': case 'F': 
+                System.out.printf ( "%s:S\n", ch ) ; 
+                break; 
+            case 'g': case 'G': 
+                System.out.printf ( "%s:T\n", ch ) ; 
+                break; 
+            case 'h': case 'H': 
+                System.out.printf ( "%s:U\n", ch ) ; 
+                break; 
+            case 'i': case 'I': 
+                System.out.printf ( "%s:V\n", ch ) ; 
+                break; 
+            case 'j': case 'J': 
+                System.out.printf ( "%s:W\n", ch ) ; 
+                break; 
+            case 'k': case 'K': 
+                System.out.printf ( "%s:X\n", ch ) ; 
+                break; 
+            case 'l': case 'L': 
+                System.out.printf ( "%s:Y\n", ch ) ; 
+                break; 
+            case 'm': case 'M': 
+                System.out.printf ( "%s:Z\n", ch ) ; 
+                break; 
+            case 'n': case 'N': 
+                System.out.printf ( "%s:A\n", ch ) ; 
+                break; 
+            case 'o': case 'O': 
+                System.out.printf ( "%s:B\n", ch ) ; 
+                break; 
+            case 'p': case 'P': 
+                System.out.printf ( "%s:C\n", ch ) ; 
+                break; 
+            case 'q': case 'Q': 
+                System.out.printf ( "%s:D\n", ch ) ; 
+                break; 
+            case 'r': case 'R': 
+                System.out.printf ( "%s:E\n", ch ) ; 
+                break; 
+            case 's': case 'S': 
+                System.out.printf ( "%s:F\n", ch ) ; 
+                break; 
+            case 't': case 'T': 
+                System.out.printf ( "%s:G\n", ch ) ; 
+                break; 
+            case 'u': case 'U': 
+                System.out.printf ( "%s:H\n", ch ) ; 
+                break; 
+            case 'v': case 'V': 
+                System.out.printf ( "%s:I\n", ch ) ; 
+                break; 
+            case 'w': case 'W': 
+                System.out.printf ( "%s:J\n", ch ) ; 
+                break; 
+            case 'x': case 'X': 
+                System.out.printf ( "%s:K\n", ch ) ; 
+                break; 
+            case 'y': case 'Y': 
+                System.out.printf ( "%s:L\n", ch ) ; 
+                break; 
+            case 'z': case 'Z': 
+                System.out.printf ( "%s:M\n", ch ) ; 
+                break; 
+            default: 
+                System.out.printf ( "CANNOT CONVERT\n" ); 
+                break; 
+        } 
+    } 
+} 
+ 
+ 
+ 
+~                
