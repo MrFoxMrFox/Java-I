@@ -1,0 +1,144 @@
+// Kyle Hampton    
+// CIST 1400-006   
+// 6           
+// October 5, 2016 
+// N/A             
+                   
+import java.util.Scanner;
+public class kthampton_Sentence {
+    public static void main (String args[]){
+        Scanner get = new Scanner ( System.in );
+        String sentence;
+        System.out.print( "Enter a sentence to ROT13: ");
+        sentence = get.nextLine();
+        System.out.printf ( "ORIG:  %s\n", sentence);
+        int numChars = sentence.length();
+        int pos = 0;
+        int count = 1;
+        System.out.print( "ROT13: ");
+        while ( pos < numChars){
+            switch ( sentence.charAt(pos) ) {
+                case 'a': case 'A':
+                    System.out.printf( "N", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'b': case 'B':
+                    System.out.printf( "O", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'c': case 'C':
+                    System.out.printf( "P", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'd': case 'D':
+                    System.out.printf( "Q", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'e': case 'E':
+                    System.out.printf( "R", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'f': case 'F':
+                    System.out.printf( "S", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'g': case 'G':
+                    System.out.printf( "T", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'h': case 'H':
+                    System.out.printf( "U", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'i': case 'I':
+                    System.out.printf( "V", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'j': case 'J':
+                    System.out.printf( "W", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'k': case 'K':
+                    System.out.printf( "X", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'l': case 'L':
+                    System.out.printf( "Y", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'm': case 'M':
+                    System.out.printf( "Z", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'n': case 'N':
+                    System.out.printf( "A", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'o': case 'O':
+                    System.out.printf ( "B", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'p': case 'P':
+                    System.out.printf( "C", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'q': case 'Q':
+                    System.out.printf( "D", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'r': case 'R':
+                    System.out.printf( "E", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 's': case 'S':
+                    System.out.printf( "F", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 't': case 'T':
+                    System.out.printf( "G", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'u': case 'U':
+                    System.out.printf( "H", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'v': case 'V':
+                    System.out.printf( "I", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'w': case 'W':
+                    System.out.printf( "J", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'x': case 'X':
+                    System.out.printf( "K", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'y': case 'Y':
+                    System.out.printf( "L", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                case 'z': case 'Z':
+                    System.out.printf( "M", sentence.charAt(pos) );
+                    ++count;
+                    break;
+                default:
+                    System.out.printf( "", sentence.charAt(pos) );
+                    break;
+            }
+            if ( count % 6 == 0 && count >= 6 ) {{
+                System.out.print ( " " );} count++;}
+            pos++;
+        }
+        System.out.println();
+    }
+}
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                   
