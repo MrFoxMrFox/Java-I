@@ -1,0 +1,104 @@
+// Kyle Hampton 
+// CIST 1400-006 
+// 5 
+// September 28, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+ 
+public class kthampton_NumberConversions 
+{ 
+    public static void main ( String args[] ) { 
+        Scanner get = new Scanner ( System.in );  //Declare Scanner 
+        int x; //Declare Variables for int and char 
+        int  a, b , c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t; 
+        char ch; 
+        System.out.print ( "Enter decimal number between 0 and 1048575 to convert: " ); 
+        x = get.nextInt(); //Receive x input from user 
+        while( x < 0 || x > 1048575){ //Verify input is a valid number 
+            System.out.print ( "Enter decimal number between 0 and 1048575 to convert: "); 
+            x = get.nextInt(); 
+        } //Upon receiving valid number, prompt user for binary or octal conversion 
+        System.out.print ( "Convert to (b)inary or (o)ctal? " ); 
+        ch = get.next().charAt(0); 
+        while( ch != 'b' && ch != 'o' ){ 
+            System.out.print ( "Convert to (b)inary or (o)ctal? "); 
+            ch = get.next().charAt(0); 
+        } //Validate user requested binary or octal conversion 
+        switch ( ch ) { 
+            case 'b': 
+                { 
+                    System.out.println ( "Converting to binary ..." ); 
+                    //Perform binary conversion 
+                    a = x / 524288; 
+                    x = x % 524288; 
+                    b = x / 262144; 
+                    x = x % 262144; 
+                    c = x / 131072; 
+                    x = x % 131072; 
+                    d = x / 65536; 
+                    x = x % 65536; 
+                    e = x / 32768; 
+                    x = x % 32768; 
+                    f = x / 16384; 
+                    x = x % 16384; 
+                    g = x / 8192; 
+                    x = x % 8192; 
+                    h = x / 4096; 
+                    x = x % 4096; 
+                    i = x / 2048; 
+                    x = x % 2048; 
+                    j = x / 1024; 
+                    x = x % 1024; 
+                    k = x / 512; 
+                    x = x % 512; 
+                    l = x / 256; 
+                    x = x % 256; 
+                    m = x / 128; 
+                    x = x % 128; 
+                    n = x / 64; 
+                    x = x % 64; 
+                    o = x / 32; 
+                    x = x % 32; 
+                    p = x / 16; 
+                    x = x % 16; 
+                    q = x / 8; 
+                    x = x % 8; 
+                    r = x / 4; 
+                    x = x % 4; 
+                    s = x / 2; 
+                    x = x % 2; 
+                    t = x / 1; 
+                    System.out.printf("%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d\n", a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t); 
+                } 
+                break; 
+            case 'o': 
+                { 
+                    System.out.println ( "Converting to octal ..." ); 
+                    //Perform octal conversion 
+                    a = x / 262144; 
+                    x = x % 262144; 
+                    b = x / 32768; 
+                    x = x % 32768; 
+                    c = x / 4096; 
+                    x = x % 4096; 
+                    d = x / 512; 
+                    x = x % 512; 
+                    e = x / 64; 
+                    x = x % 64; 
+                    f = x / 8; 
+                    x = x % 8; 
+                    g = x / 1; 
+                    System.out.printf("%d%d%d%d%d%d%d\n",a,b,c,d,e,f,g); 
+                } 
+                break; 
+            default: 
+                System.out.println ( "Convert to (b)inary or (o)ctal?" ); 
+                break; 
+        } 
+    } 
+} 
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+~                                      
