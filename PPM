@@ -1,0 +1,243 @@
+/ Kyle Hampton 
+// CIST 1400-006 
+// 10 
+// November 14, 2016 
+// N/A 
+ 
+import java.util.Scanner; 
+import java.io.File; 
+import java.io.PrintWriter; 
+ 
+public class kthampton_PPM { 
+    private static Scanner input = new Scanner ( System.in ); 
+    public static void main ( String args[] ) { 
+        try { 
+            Scanner keyboard = new Scanner( System.in ); 
+            System.out.println( "PPM Image Editor v1.0" ); 
+            System.out.println( "Enter input image file name: "); 
+            String inFile; 
+            inFile = keyboard.next(); 
+ 
+            System.out.println( "Enter output image file name: "); 
+            String outFile; 
+            outFile = keyboard.next(); 
+ 
+            File file = new File( inFile ); 
+            Scanner input = new Scanner( file ); 
+ 
+            String magicNum = input.next(); 
+            System.out.println( "First item of the file is: " + magicNum ); 
+            int cols = input.nextInt(); 
+            System.out.println( "The number of columns: " + cols ); 
+            int rows = input.nextInt(); 
+            System.out.printf( "The number of rows: %d\n", rows ); 
+            int pix = input.nextInt(); 
+            System.out.printf( "The number of pixels: %d\n", pix ); 
+ 
+            final int howMany = (cols * rows * 3) + 1; 
+            int[] copyBuffer = new int[howMany]; 
+            int x = 0; 
+            while ( input.hasNext() ) { 
+                int v = input.nextInt(); 
+                copyBuffer[x] = v; 
+                x++; 
+            } 
+ 
+            //Red Negation 
+            char red; 
+            System.out.println( "Do you want a Red Negative? (y/n)" ); 
+            red = keyboard.next().charAt(0); 
+            while( red != 'y' && red != 'n' ) { 
+                System.out.println( "Do you want a Red Negative? (y/n)" ); 
+                red = keyboard.next().charAt(0); 
+            } 
+            if (red == 'y') { 
+                negateRed( copyBuffer, cols );} 
+ 
+            //Green Negation 
+            char green; 
+            System.out.println( "Do you want a Green Negative? (y/n)" ); 
+            green = keyboard.next().charAt(0); 
+            while( green != 'y' && green != 'n' ) { 
+                System.out.println( "Do you want a Green Negative? (y/n)" ); 
+                green = keyboard.next().charAt(0); 
+            } 
+            if (green == 'y') { 
+                negateGreen( copyBuffer, cols );} 
+ 
+            //Blue Negation 
+            char blue; 
+            System.out.println( "Do you want a Blue Negative? (y/n)" ); 
+            blue = keyboard.next().charAt(0); 
+            while( blue != 'y' && blue != 'n' ) { 
+                System.out.println( "Do you want a Blue Negative? (y/n)" ); 
+                blue = keyboard.next().charAt(0); 
+            } 
+            if (blue == 'y') { 
+                negateBlue( copyBuffer, cols );} 
+ 
+            //Greyscale 
+            char grey; 
+            System.out.println( "Do you want to Greyscale? (y/n)" ); 
+            grey = keyboard.next().charAt(0); 
+            while( grey != 'y' && grey != 'n' ) { 
+                System.out.println( "Do you want to Greyscale? (y/n)" ); 
+                grey = keyboard.next().charAt(0); 
+            } 
+            if (grey == 'y') { 
+                greyscale( copyBuffer, cols );} 
+ 
+            //Flip Horizontal 
+            char flip; 
+            System.out.println( "Do you want to Horizontal Flip? (y/n)" ); 
+            flip = keyboard.next().charAt(0); 
+            while( flip != 'y' && flip != 'n' ) { 
+                System.out.println( "Do you want to Horizontal Flip? (y/n)" ); 
+                flip = keyboard.next().charAt(0);
+            }
+            if (flip == 'y') {
+                flipHorizontal( copyBuffer, cols, rows );}
+ 
+            PrintWriter writer = new PrintWriter( outFile );
+ 
+            writer.println( magicNum );
+            writer.println( cols + " " + rows );
+            writer.println( pix );
+            for ( int y = 0; y < copyBuffer.length; y++ ) {
+                writer.println( copyBuffer[y] );
+            }
+ 
+            System.out.println( "Your new image has been written to " + outFile );
+            writer.close();
+        }
+        catch ( Exception ex ) {
+            System.out.println( "An error has occurred!" );
+            ex.printStackTrace();
+        }
+    }
+    /**
+     *     negateRed
+     *
+     *     This method negates the red value in the image.  All P3-format
+     *     PPM images have an image depth of 255, so use that in your 
+     *     method's calculations.
+     *
+     *     @param     buffer      an integer array containing the image buffer
+     *     @param     columns     an integer w/ the number of columns in the image
+     *     @return    NONE
+     */
+    public static void negateRed( int[] buff, int columns ) {
+        for ( int x = 0; x < buff.length; x++ ) {
+            if ( x == 0 || x % 3 == 0 && x > 2 ) {
+                buff[x] = 255 - buff[x];
+            }
+        }
+ 
+    }
+    /**
+     *     negateGreen
+     *
+     *     This method negates the green value in the image.  All P3-format
+     *     PPM images have an image depth of 255, so use that in your 
+     *     method's calculations.
+     *
+     *     @param     buffer      an integer array containing the image buffer
+     *     @param     columns     an integer w/ the number of columns in the image
+     *     @return    NONE
+     */
+    public static void negateGreen( int[] buff, int columns ) {
+        for ( int x = 0; x < buff.length; x++ ) {
+            if ( x % 3 == 0 && x > 2 ){
+                buff[x-2] = 255 - buff[x-2];
+            }
+        }
+    }
+    /**
+     *     negateBlue
+     *
+     *     This method negates the blue value in the image.  All P3-format
+     *     PPM images have an image depth of 255, so use that in your 
+     *     method's calculations.
+     *
+     *     @param     buffer      an integer array containing the image buffer
+     *     @param     columns     an integer w/ the number of columns in the image
+     *     @return    NONE
+     */
+    public static void negateBlue( int[] buff, int columns ) {
+        for ( int x = 0; x < buff.length; x++ ) {
+            if ( x % 3 == 0 && x > 1 ){
+                buff[x-1] = 255 - buff[x-1];
+            }
+        }
+    }
+    /**
+     *     greyscale
+     *     This method converts each pixel to its greyscale equivalent by
+     *     average the red, green and blue values and replacing each of those
+     *     values with the calculated average.
+     *
+     *     @param      buffer      an integer array containing the image buffer
+     *     @param      columns     an integer w/the number of columns in the image
+     *     @return     NONE
+     */
+    public static void greyscale( int[] buff, int columns ) {
+        for ( int x = 0; x < buff.length; x++ ) {
+            int buffAvg = 0;
+            if ( (x + 1) % 3 == 0 && x > 1 ) {{{{
+                buffAvg =  (buff[x] + buff[x-1] + buff[x+1]) / 3;
+            }
+            buff[x] = buffAvg;
+            }
+            buff[x-1] = buffAvg;
+            }
+            buff[x-2] = buffAvg;
+            }
+        }
+    }
+    /**
+     *     flipHorizontal
+     *
+     *     This method flips a single row of the image so that it is a horizontal mirror
+     *     of the original row
+     *
+     *     @param      buffer      an integer array containing the image buffer
+     *     @param      columns     in integer w/the number of columns in the image
+     *     @param      rows        an integer w/the number of rows in the image
+     *     @return     NONE
+     */
+ 
+ 
+    public static void flipHorizontal( int[] buff, int width, int height ) {
+        int temp1, temp2, temp3;
+        int pixWidth = width * 3;
+        for ( int z = 0; z < height; z++ ) {
+            int y = (pixWidth * z) + pixWidth - 1;
+            for ( int x = (z * pixWidth); x < y; x++ ) { //z * width is not right, fix this and you're done
+                if ( (x + 1) % 3 == 0 && x > 1 ) {{{{{{{{{
+                    temp1 = buff[x];
+                }
+                temp2 = buff[x - 1];
+                }
+                temp3 = buff[x - 2];
+                }
+                buff[x] = buff[y + 2];
+                }
+                buff[x - 1] = buff[y + 1];
+                }
+                buff[x - 2] = buff[y];
+                }
+                buff[y + 2] = temp1;
+                }
+                buff[y + 1] = temp2;
+                }
+                buff[y] = temp3;
+                }
+                y--;
+            }
+        }
+    }
+}
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+~                                                
